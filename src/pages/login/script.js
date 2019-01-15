@@ -7,5 +7,8 @@ export default {
         meta: {
             title: 'login'
         }
+    },
+    beforeMount () {
+        console.log('login:beforeMount ...')
     }
 }

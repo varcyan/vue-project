@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import Router from 'vue-router'
+import store from './store'
 import pages from './pages'
 
 Vue.config.productionTip = false
@@ -54,6 +55,7 @@ function eachRoutes(_routeList) {
 new Vue({
     el: '#app',
     router,
+    store,
     components: { App },
     template: '<App/>'
 })

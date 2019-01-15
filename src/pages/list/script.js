@@ -1,44 +1,11 @@
+import {
+    mapMutations,
+    mapGetters,
+} from 'vuex'
 export default {
     data() {
         return {
-            addFormData: {
-                provinceCode: '',
-                cityCode: '',
-                countyCode: ''
-            },
-            ruleValidate: {
-                // countyCode: [{
-                //     required: true,
-                //     message: '审批部门不能为空',
-                //     trigger: 'blur'
-                // }],
-            },
-            list: [],
-            filterTab: '',
-            department: {
-                //部门列表
-                list: [
-                    {
-                        value: 'qhshbt',
-                        label: '青海省环保厅'
-                    }
-                ],
-                defaultValue: 'qhshbt'
-            },
-            removeStatus: {
-                //删除弹出框状态
-                visible: false,
-                loading: true
-            },
-            addStatus: {
-                //新增弹出框状态
-                visible: false,
-                loading: false
-            },
-            page: 1,
-            pageSize: 20,
-            total: 40,
-            currentData: {}
+            list: []
         }
     },
     route: {
@@ -46,5 +13,17 @@ export default {
         meta: {
             title: 'list'
         }
+    },
+    beforeMount () {
+        console.log('list:beforeMount ...')
+    },
+    created () {
+        console.log(this.userInfo)
+    },
+    computed: {
+        ...mapGetters(['userInfo'])
+    },
+    methods: {
+        ...mapMutations(['setUserInfo']),
     }
 }

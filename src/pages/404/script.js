@@ -9,5 +9,8 @@ export default {
 		return {
 			
 		}
-	}
+	},
+	beforeMount () {
+        console.log('404:beforeMount ...')
+    }
 }

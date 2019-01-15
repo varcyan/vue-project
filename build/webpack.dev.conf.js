@@ -32,7 +32,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
                     from: /.*/,
                     to: path.posix.join(
                         config.dev.assetsPublicPath,
-                        'index.html'
+                        'src/index.html'
                     )
                 }
             ]
