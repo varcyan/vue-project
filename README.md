@@ -1,6 +1,6 @@
-# life-web
+# web
 
-> 非车生命表
+> Vue项目
 
 ## Build Setup
 
