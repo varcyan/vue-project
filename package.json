@@ -1,7 +1,7 @@
 {
-  "name": "life-web",
+  "name": "vue-project",
   "version": "1.0.0",
-  "description": "非车生命表",
+  "description": "project",
   "author": "varcyan",
   "private": true,
   "scripts": {
