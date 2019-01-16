@@ -26,6 +26,7 @@ npm run build --report
 |dist|生产包，打包后生成|
 |node_modules|npm 加载的项目依赖模块|
 |src|开发目录 源文件|
+|src/app|入口文件|
 |src/assets|静态文件图片等依赖 会被webpack打包处理|
 |src/components|组件|
 |src/pages|页面|

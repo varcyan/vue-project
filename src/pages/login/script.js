@@ -10,5 +10,8 @@ export default {
     },
     beforeMount () {
         console.log('login:beforeMount ...')
+    },
+    mounted () {
+
     }
 }
