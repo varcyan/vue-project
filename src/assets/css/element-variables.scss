@@ -1,0 +1,27 @@
+/* 改变主题色变量 */
+$--color-primary: #727cf5;
+$--all-transition: all .15s cubic-bezier(.645,.045,.355,1) !default;
+
+/* 圆角 */
+$--border-radius-base: 3px !default;
+$--border-radius-small: 3px !default;
+$--msgbox-border-radius: 2px !default;
+
+/* 消息弹框的边框 */
+.el-message-box__wrapper .el-message-box {
+    border: none
+}
+// .el-message.el-message--error {
+//     background-color: red
+// }
+
+/* label 下方间距 */
+.el-form--label-top .el-form-item__label {
+    padding: 0;
+}
+
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";

@@ -1,10 +1,13 @@
+import {
+    SET_USERINFO,
+    ESC_USERINFO
+} from './mutation-types.js'
 export default {
-    setUserInfo(state, info) {
+    [SET_USERINFO](state, info) {   // 设置用户信息
         state.userInfo = info
-        window.sessionStorage.userInfo = JSON.stringify(info)
+        window.sessionStorage.userInfo = JSON.stringify(state.userInfo)
     },
-    clearLogin(state) {
-        state.menu = null
+    [ESC_USERINFO](state) {
         state.userInfo = null
         window.sessionStorage.removeItem('userInfo')
     }

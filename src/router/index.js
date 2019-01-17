@@ -5,8 +5,8 @@ Vue.use(Router)
 // 引入组件
 const Login = r =>
     require.ensure([], () => r(require('@/pages/login/index')), 'login')
-const List = r =>
-    require.ensure([], () => r(require('@/pages/list/index')), 'list')
+const Main = r =>
+    require.ensure([], () => r(require('@/pages/main/index')), 'main')
 const NotFound = r =>
     require.ensure([], () => r(require('@/pages/404/index')), 'notFound')
 
@@ -15,20 +15,33 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: '/login'
+            redirect: '/login',
+            meta: {
+                requiresAuth: false // 是否需要验证
+            }
         },
         {
             path: '*',
-            redirect: '/404'
+            redirect: '/404',
+            meta: {
+                requiresAuth: false
+            }
         },
         {
             path: '/login', // 路由名称
             name: 'login', // 命名路由
-            component: Login // vue组件
+            component: Login, // vue组件,
+            meta: {
+                requiresAuth: false
+            }
         },
         {
-            path: '/list',
-            component: List
+            name: 'main',
+            path: '/main',
+            component: Main,
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             path: '/404',

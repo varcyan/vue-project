@@ -1,32 +1,107 @@
 <div id="login">
     <div class="login-wrap">
+        <!-- <el-form
+            :model="loginForm"
+            status-icon
+            :rules="rulesLogin"
+            ref="loginForm"
+            label-width="100px"
+            :label-position="'right'"
+            class="demo-ruleForm"
+        >
+            <el-form-item label="用户名" prop="userName">
+                <el-input
+                    class="form-input"
+                    v-model="loginForm.userName"
+                    autocomplete="off"
+                ></el-input>
+            </el-form-item>
+            <el-form-item label="归属机构" prop="comCode">
+                <el-input
+                    class="form-input"
+                    v-model.number="loginForm.comCode"
+                ></el-input>
+            </el-form-item>
+            <el-form-item label="密码" prop="passWord">
+                <el-input
+                    class="form-input"
+                    type="password"
+                    v-model="loginForm.passWord"
+                    autocomplete="off"
+                ></el-input>
+            </el-form-item>
+
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('loginForm')"
+                    >提交</el-button
+                >
+                <el-button @click="resetForm('loginForm')">重置</el-button>
+            </el-form-item>
+        </el-form> -->
         <form class="form-signin">
             <h1 class="h3 mb-3">Login</h1>
             <label for="inputEmail" class="sr-only">User Name</label>
-            <input
-                type="text"
-                id="inputEmail"
-                class="form-input"
-                placeholder="User Name"
-                required=""
-                autofocus=""
-                autocomplete="off"
-            />
+            <el-popover
+                placement="right-start"
+                width="200"
+                trigger="manual"
+                content="请输入用户名。"
+                v-model="loginFormRules.userName.visible"
+            >
+                <input
+                    slot="reference"
+                    type="text"
+                    class="form-input"
+                    placeholder="User Name"
+                    autocomplete="off"
+                    v-model="loginForm.userName"
+                    @blur="requireLogin('userName')"
+                />
+            </el-popover>
+            <label for="inputEmail" class="sr-only">ComCode</label>
+            <el-popover
+                placement="right-start"
+                width="200"
+                trigger="manual"
+                content="请输入归属机构。"
+                v-model="loginFormRules.comCode.visible"
+            >
+                <input
+                    slot="reference"
+                    type="text"
+                    class="form-input"
+                    placeholder="ComCode"
+                    autocomplete="off"
+                    v-model="loginForm.comCode"
+                    @blur="requireLogin('comCode')"
+                />
+            </el-popover>
             <label for="inputPassword" class="sr-only">Password</label>
-            <input
-                type="password"
-                id="inputPassword"
-                class="form-input"
-                placeholder="Password"
-                required=""
-            />
-            <div class="checkbox mb-3">
+            <el-popover
+                placement="right-start"
+                width="200"
+                trigger="manual"
+                content="请输入密码。"
+                v-model="loginFormRules.passWord.visible"
+            >
+                <input
+                    slot="reference"
+                    type="text"
+                    class="form-input"
+                    placeholder="User Name"
+                    autocomplete="off"
+                    v-model="loginForm.passWord"
+                    @blur="requireLogin('passWord')"
+                />
+            </el-popover>
+            <div class="mgb-15 mgt-15 align-center">
                 <label>
-                    <input type="checkbox" value="remember-me" /> Remember me
+                    <el-checkbox v-model="rememberStatus">Remember me</el-checkbox>
                 </label>
             </div>
-            <el-button type="primary">主要按钮</el-button>
-            <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+            <div class="align-center">
+                <button class="form-btn" @click="submitLogin">Sign in</button>
+            </div>
         </form>
     </div>
 </div>
