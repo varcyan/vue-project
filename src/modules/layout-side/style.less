@@ -1,0 +1,79 @@
+.v-aside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+    width: 250px;
+    background: linear-gradient(135deg, #8f75da 0, #727cf5 60%);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    padding-top: 20px;
+    // 左侧文字默认颜色
+    &,
+    a {
+        color: #cedce4;
+    }
+    // 导航标题
+    .v-menu-h3 {
+        font-size: 12px;
+        padding-left: 24px;
+        padding-top: 12px;
+    }
+    // 所有标题（链接）
+    .v-menu-title {
+        position: relative;
+        transition: 0.5s;
+        cursor: pointer;
+        line-height: 22px;
+    }
+    .v-menu-title:hover {
+        color: #fff;
+    }
+    .v-menu-title.active {
+        color: #fff;
+    }
+    // 一级 & 二级 左侧距离
+    .v-menu-one-tt,
+    .v-menu-second-tt {
+        padding-left: 50px;
+    }
+    // 三级 左侧距离
+    .v-menu-third-tt {
+        padding-left: 78px;
+    }
+    // 一级菜单
+    .v-menu-one-tt {
+        line-height: 22px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+    // 一级左侧图标
+    .v-menu-ico {
+        position: absolute;
+        left: 24px;
+        top: 50%;
+        margin-top: -6px;
+    }
+    // 二级菜单
+    .v-menu-second-tt {
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+    // 小箭头
+    .v-menu-row {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        margin-top: -4px;
+        font-size: 10px;
+        transform: rotate(0deg);
+        transition: 0.5s;
+        font-weight: 600;
+    }
+    // 箭头打开状态
+    .v-menu-row-open {
+        transform: rotate(90deg);
+    }
+}

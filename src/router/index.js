@@ -17,6 +17,7 @@ export default new Router({
             path: '/',
             redirect: '/login',
             meta: {
+                title: '登录',
                 requiresAuth: false // 是否需要验证
             }
         },
@@ -24,6 +25,7 @@ export default new Router({
             path: '*',
             redirect: '/404',
             meta: {
+                title: '404',
                 requiresAuth: false
             }
         },
@@ -32,6 +34,7 @@ export default new Router({
             name: 'login', // 命名路由
             component: Login, // vue组件,
             meta: {
+                title: '登录',
                 requiresAuth: false
             }
         },
@@ -45,7 +48,10 @@ export default new Router({
         },
         {
             path: '/404',
-            component: NotFound
+            component: NotFound,
+            meta: {
+                requiresAuth: false
+            }
         }
     ]
 })

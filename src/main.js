@@ -25,8 +25,22 @@ import {
     CheckboxButton,
     CheckboxGroup,
     Row,
-    Col
+    Col,
+    Menu,
+    Submenu,
+    MenuItem,
+    MenuItemGroup,
+    Collapse,
+    CollapseItem,
+    Autocomplete,
+    Breadcrumb,
+    BreadcrumbItem
 } from 'element-ui' // 按需引入，需在下方使用Vue.use
+// collapse 展开折叠
+import CollapseTransition from 'element-ui/lib/transitions/collapse-transition'
+// 引入自定义组件
+import Modules from './modules'
+import Components from './components'
 // import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/element-variables.scss'
 import App from './app'
@@ -51,6 +65,19 @@ Vue.use(CheckboxButton)
 Vue.use(CheckboxGroup)
 Vue.use(Row)
 Vue.use(Col)
+Vue.use(Menu)
+Vue.use(Submenu)
+Vue.use(MenuItem)
+Vue.use(MenuItemGroup)
+Vue.use(Collapse)
+Vue.use(CollapseItem)
+Vue.use(Autocomplete)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
+
+
+Vue.component(CollapseTransition.name, CollapseTransition)
+
 
 Vue.prototype.$loading = Loading.service
 Vue.prototype.$msgbox = MessageBox
@@ -62,11 +89,20 @@ Vue.prototype.$message = Message
 
 Vue.config.productionTip = false
 
+
+// 引入模块
+Object.keys(Modules).map(_key => {
+    Vue.component(_key, Modules[_key])
+})
+Object.keys(Components).map(_key => {
+    Vue.component(_key, Components[_key])
+})
+
+
 let isLogin = window.sessionStorage.userInfo
 
 router.beforeEach((to, from, next) => {
-    document.title = to.meta.title || ''
-    console.log(window.sessionStorage.userInfo)
+    document.title = to.meta.title || '阳光产险智能生命表系统'
     // 将要跳转的路由是否需要有需要验证的页面
     if (to.matched.some(record => record.meta.requiresAuth)) {        
         if (!isLogin) {
@@ -77,8 +113,7 @@ router.beforeEach((to, from, next) => {
             })
         }
     } else {
-        // 不需要验证 如login页面
-        next()
+        next()  // 不需要验证的页面直接进入 如login页面
     }
     next()
 })

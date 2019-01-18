@@ -1,6 +1,8 @@
+
 export default {
     userInfo: null,
     isLogin: false, // 登录状态
+    menuList: [],
     mapList: {
         //项目性质
         projectNature: {

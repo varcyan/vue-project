@@ -31,7 +31,7 @@ export default {
         }
     },
     beforeMount() {
-        console.log('login:beforeMount ...')
+
     },
     mounted() {
         this.getRememberMe()
@@ -88,7 +88,6 @@ export default {
             this.setLocalRememberMe()
             // 存储用户信息
             this.SET_USERINFO(this.loginForm)
-            console.log(this.userInfo)
             // 跳转页面
             this.$router.push({ name: 'main'}) 
         }

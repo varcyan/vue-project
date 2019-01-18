@@ -12,8 +12,6 @@ export default {
         }
     },
     beforeMount() {
-        console.log('list:beforeMount ...')
-        console.log(this.USERINFO)
 
     },
     created() {

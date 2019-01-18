@@ -1,0 +1,15 @@
+<el-autocomplete
+    class="inline-input"
+    v-model="test"
+    prefix-icon="el-icon-search"
+    :fetch-suggestions="querySearch"
+    placeholder="请输入内容"
+    :trigger-on-focus="false"
+    @select="handleSelect"
+>
+    <el-button
+        slot="append"
+        icon="el-icon-search"
+        @click="searchMenu"
+    ></el-button
+></el-autocomplete>

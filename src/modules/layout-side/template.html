@@ -1,0 +1,65 @@
+<div class="v-aside">
+    <!-- <div class="v-side-title">
+        <img src="./../../assets/logo.jpeg" alt="" width="32" height="32">
+        <h1 class="v-side-h1">智能生命表系统</h1>
+    </div> -->
+    <div>
+        <h3 class="v-menu-h3">导航目录</h3>
+        <!-- MENU LEVEL:1 -->
+        <ul class="v-menu-one">
+            <li v-for="(menu_1, index_1) in menuList">
+                <div
+                    class="v-menu-one-tt v-menu-title"
+                    v-bind:class="{'active': menu_1.status && menu_1.children}"
+                    @click="menu_1.status = !menu_1.status"
+                >
+                    <i class="el-icon-menu v-menu-ico"></i>
+                    <span>{{ menu_1.value }}</span>
+                    <i
+                        v-if="menu_1.children && menu_1.children.length"
+                        class="el-icon-arrow-right v-menu-row"
+                        v-bind:class="{'v-menu-row-open': menu_1.status}"
+                    ></i>
+                </div>
+                <!-- MENU LEVEL:2 -->
+                <el-collapse-transition>
+                    <ul
+                        class="v-menu-second"
+                        v-show="menu_1.status"
+                        v-if="menu_1.children && menu_1.children.length"
+                    >
+                        <li v-for="(menu_2, index_2) in menu_1.children">
+                            <div
+                                class="v-menu-second-tt v-menu-title"
+                                @click="menu_2.status = !menu_2.status"
+                            >
+                                <span>{{ menu_2.value }}</span>
+                                <i
+                                    v-if="menu_2.children && menu_2.children.length"
+                                    class="el-icon-arrow-right v-menu-row"
+                                    v-bind:class="{'v-menu-row-open': menu_2.status}"
+                                ></i>
+                            </div>
+                            <!-- MENU LEVEL:3 -->
+                            <el-collapse-transition>
+                                <ul
+                                    class="v-menu-third"
+                                    v-show="menu_2.status"
+                                    v-if="menu_2.children && menu_2.children.length"
+                                >
+                                    <li
+                                        v-for="(menu_3, index_3) in menu_2.children"
+                                    >
+                                        <div class="v-menu-third-tt v-menu-title">
+                                            {{ menu_3.value }}
+                                        </div>
+                                    </li>
+                                </ul>
+                            </el-collapse-transition>
+                        </li>
+                    </ul>
+                </el-collapse-transition>
+            </li>
+        </ul>
+    </div>
+</div>
