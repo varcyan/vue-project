@@ -1,4 +1,4 @@
-import {} from 'vuex';
+import {} from 'vuex'
 
 export default {
 	props: {
@@ -7,7 +7,7 @@ export default {
 	data() {
 		return {
 
-		};
+		}
 	},
 	mounted() {
 

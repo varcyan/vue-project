@@ -11,7 +11,8 @@
                 <div
                     class="v-menu-one-tt v-menu-title"
                     v-bind:class="{'active': menu_1.status && menu_1.children}"
-                    @click="menu_1.status = !menu_1.status"
+                    @click=""
+                    @click="clickMenu(menu_1)"
                 >
                     <i class="el-icon-menu v-menu-ico"></i>
                     <span>{{ menu_1.value }}</span>
@@ -31,7 +32,7 @@
                         <li v-for="(menu_2, index_2) in menu_1.children">
                             <div
                                 class="v-menu-second-tt v-menu-title"
-                                @click="menu_2.status = !menu_2.status"
+                                @click="clickMenu(menu_2)"
                             >
                                 <span>{{ menu_2.value }}</span>
                                 <i
@@ -50,7 +51,7 @@
                                     <li
                                         v-for="(menu_3, index_3) in menu_2.children"
                                     >
-                                        <div class="v-menu-third-tt v-menu-title">
+                                        <div class="v-menu-third-tt v-menu-title" @click="clickMenu(menu_3)">
                                             {{ menu_3.value }}
                                         </div>
                                     </li>

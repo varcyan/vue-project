@@ -89,7 +89,7 @@ export default {
             // 存储用户信息
             this.SET_USERINFO(this.loginForm)
             // 跳转页面
-            this.$router.push({ name: 'main'}) 
+            this.$router.push({name: 'main'}) 
         }
     }
 }

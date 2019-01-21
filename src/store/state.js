@@ -3,6 +3,7 @@ export default {
     userInfo: null,
     isLogin: false, // 登录状态
     menuList: [],
+    breadList: [],  // 面包屑内容
     mapList: {
         //项目性质
         projectNature: {

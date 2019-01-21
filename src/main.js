@@ -98,14 +98,12 @@ Object.keys(Components).map(_key => {
     Vue.component(_key, Components[_key])
 })
 
-
-let isLogin = window.sessionStorage.userInfo
-
+// 路由守卫
 router.beforeEach((to, from, next) => {
-    document.title = to.meta.title || '阳光产险智能生命表系统'
+    document.title = to.meta.title || 'system'
     // 将要跳转的路由是否需要有需要验证的页面
-    if (to.matched.some(record => record.meta.requiresAuth)) {        
-        if (!isLogin) {
+    if (to.matched.some(record => record.meta.requiresAuth)) {  
+        if (!window.sessionStorage.userInfo) {
             Vue.prototype.$message('未登录')
             next({
                 path: '/login',
@@ -117,6 +115,7 @@ router.beforeEach((to, from, next) => {
     }
     next()
 })
+
 
 /* eslint-disable no-new */
 new Vue({
