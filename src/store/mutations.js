@@ -19,14 +19,11 @@ export default {
     },
     [SET_BREADLIST](state, info) {    // 设置面包屑某一级内容
         let _levelNum = info.level.split('_')[1] - 1
-        console.log(_levelNum)
         state.breadList[_levelNum] = info
         state.breadList.forEach((item, index) => {
-            console.log('循环>>>>' + index + '>>' +_levelNum + '>>')
             if (index > _levelNum) {
                 console.log(state.breadList.splice(index))
             }
-
         })
         state.breadList = state.breadList.reverse().reverse()
         console.log(state.breadList)

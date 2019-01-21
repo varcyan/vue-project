@@ -3,8 +3,7 @@ export default {
     props: {},
     data() {
         return {
-            // list: ''
-            list: this.$store.state.BREADLIST
+
         }
     },
     methods: {},
@@ -12,14 +11,8 @@ export default {
         ...mapGetters(['BREADLIST'])
     },
     watch: {
-        BREADLIST: {
+        BREADLIST: {    // 监听列表发生变化
             handler: function() {
-            },
-            deep: true //对象内部的属性监听，也叫深度监听
-        },
-        list: {
-            handler: function(val, oldval) {
-                console.log(val.name, oldval)
             },
             deep: true //对象内部的属性监听，也叫深度监听
         }
