@@ -18,14 +18,6 @@ export default {
         state.menuList = JSON.parse(JSON.stringify(info))
     },
     [SET_BREADLIST](state, info) {    // 设置面包屑某一级内容
-        let _levelNum = info.level.split('_')[1] - 1
-        state.breadList[_levelNum] = info
-        state.breadList.forEach((item, index) => {
-            if (index > _levelNum) {
-                console.log(state.breadList.splice(index))
-            }
-        })
-        state.breadList = state.breadList.reverse().reverse()
-        console.log(state.breadList)
+        state.breadList = info.reverse()
     }
 }
