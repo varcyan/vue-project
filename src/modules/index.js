@@ -1,6 +1,6 @@
-import layoutPage from './layout-page'
-import layoutSide from './layout-side'
-import layoutHeader from './layout-header'
+import layoutPage from './layout_page'
+import layoutSide from './layout_side'
+import layoutHeader from './layout_header'
 
 export default {
     layoutPage,

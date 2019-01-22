@@ -3,7 +3,7 @@ import {
     ESC_USERINFO,
     SET_MENULIST,
     SET_BREADLIST
-} from './mutation-types.js'
+} from './mutation_types.js'
 
 export default {
     [SET_USERINFO](state, info) {   // 设置用户信息
