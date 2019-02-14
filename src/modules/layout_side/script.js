@@ -1,4 +1,4 @@
-import { mapMutations } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import { getParentById } from './../../utils/tools'
 
 export default {
@@ -8,57 +8,115 @@ export default {
             status: true,
             menuList: [
                 {
+                    title: '古风',
+                    id: 101,
                     pid: 0,
-                    value: '车险业务预算管理',
-                    status: false,
-                    level: 'level_1',
+                    child: [],
+                    level: 'level_1'
+                },
+                
+                {
+                    title: '我的游戏',
                     id: 1,
-                    children: [
+                    pid: 0,
+                    checked: false,
+                    level: 'level_1',
+                    child: [
                         {
-                            pid: 1,
+                            title: '守望先锋',
                             id: 2,
-                            value: '录入',
-                            status: false,
+                            pid: 1,
+                            checked: false,
                             level: 'level_2',
-                            children: [
+                            child: [
                                 {
-                                    pid: 2,
+                                    title: 'D.VA',
                                     id: 3,
-                                    level: 'level_3',
-                                    value: '录入-1',
-                                    status: false
+                                    pid: 2,
+                                    checked: false,
+                                    child: []
+                                },
+                                {
+                                    title: '安娜',
+                                    id: 4,
+                                    pid: 2,
+                                    checked: false,
+                                    child: []
                                 }
                             ]
                         },
                         {
-                            pid: 1,
-                            id: 4,
-                            level: 'level_2',
-                            value: '查询',
-                            status: false
-                        },
-                        {
-                            pid: 1,
+                            title: '英雄杀',
                             id: 5,
-                            level: 'level_2',
-                            value: '审批',
-                            status: false
-                        },
-                        {
                             pid: 1,
-                            id: 6,
+                            checked: false,
                             level: 'level_2',
-                            value: '分解',
-                            status: false
+                            child: [
+                                {
+                                    title: '韩信',
+                                    id: 6,
+                                    pid: 5,
+                                    checked: false,
+                                    child: []
+                                },
+                                {
+                                    title: '貂蝉',
+                                    id: 7,
+                                    pid: 5,
+                                    checked: false,
+                                    child: []
+                                }
+                            ]
                         }
                     ]
                 },
                 {
+                    title: 'BUFF',
+                    id: 100,
                     pid: 0,
-                    id: 7,
                     level: 'level_1',
-                    value: '生命表编制与审批',
-                    status: false
+                    child: []
+                },
+                {
+                    title: '我的音乐',
+                    id: 8,
+                    pid: 0,
+                    checked: false,
+                    level: 'level_1',
+                    child: [
+                        {
+                            title: '古风',
+                            id: 9,
+                            pid: 8,
+                            checked: false,
+                            level: 'level_2',
+                            child: []
+                        },
+                        {
+                            title: '漫',
+                            id: 10,
+                            pid: 8,
+                            checked: false,
+                            level: 'level_2',
+                            child: []
+                        },
+                        {
+                            title: '轻音',
+                            id: 11,
+                            pid: 8,
+                            checked: false,
+                            level: 'level_2',
+                            child: []
+                        },
+                        {
+                            title: 'BUFF',
+                            id: 12,
+                            pid: 8,
+                            checked: false,
+                            level: 'level_2',
+                            child: []
+                        }
+                    ]
                 }
             ]
         }
@@ -66,13 +124,34 @@ export default {
     mounted() {
         this.SET_MENULIST(this.menuList)
     },
-    computed: {},
+    computed: {
+        ...mapGetters(['BREADLIST'])
+    },
+    watch: {
+        BREADLIST: {    // 监听列表发生变化
+            handler: function() {
+            },
+            deep: true //对象内部的属性监听，也叫深度监听
+        }
+    },
     methods: {
         ...mapMutations(['SET_MENULIST', 'SET_BREADLIST']),
         clickMenu(item) {
-            // console.log(getParentById(this.menuList, item.id))
-            item.status = !item.status
-            this.SET_BREADLIST(getParentById(this.menuList, item.id))
+            // 菜单折叠切换
+            item.checked = item.child && item.child.length ? !item.checked : true
+            // 获取当前菜单及父级菜单
+            let _parent = getParentById(this.menuList, item.id)
+            // 设置面包屑数据
+            this.SET_BREADLIST(_parent)
+        },
+        resetStatus (data) {
+            let _this = this
+            data.forEach(item => {
+                item.checked = false
+                if (item.children) {
+                    _this.resetStatus(item.child)
+                }
+            })
         },
         handleOpen(key, keyPath) {
             console.log(key, keyPath)

@@ -6,8 +6,8 @@ export function getObjById(data, id) {
             obj = data[i]
             break
         }
-        if (!obj && data[i].children) {
-            obj = getObjById(data[i].children, id)
+        if (!obj && data[i].child) {
+            obj = getObjById(data[i].child, id)
             if (obj) {
                 break
             }
@@ -19,8 +19,8 @@ export function getObjById(data, id) {
 // 根据id找到对应id对象的子集（如果存在）
 export function getChildById(data, id) {
     let target = getObjById(data, id)
-    if (target && target.children) {
-        return target.children
+    if (target && target.child) {
+        return target.child
     }
 }
 

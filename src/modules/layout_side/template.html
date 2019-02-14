@@ -10,48 +10,50 @@
             <li v-for="(menu_1, index_1) in menuList">
                 <div
                     class="v-menu-one-tt v-menu-title"
-                    v-bind:class="{'active': menu_1.status && menu_1.children}"
+                    v-bind:class="{'active': BREADLIST.indexOf(menu_1) !== -1}"
                     @click="clickMenu(menu_1)"
                 >
                     <i class="el-icon-menu v-menu-ico"></i>
-                    <span>{{ menu_1.value }}</span>
+                    <span>{{ menu_1.title }}</span>
                     <i
-                        v-if="menu_1.children && menu_1.children.length"
+                        v-if="menu_1.child && menu_1.child.length"
                         class="el-icon-arrow-right v-menu-row"
-                        v-bind:class="{'v-menu-row-open': menu_1.status}"
+                        v-bind:class="{'v-menu-row-open': menu_1.checked}"
                     ></i>
                 </div>
                 <!-- MENU LEVEL:2 -->
                 <el-collapse-transition>
                     <ul
                         class="v-menu-second"
-                        v-show="menu_1.status"
-                        v-if="menu_1.children && menu_1.children.length"
+                        v-show="menu_1.checked"
+                        v-if="menu_1.child && menu_1.child.length"
                     >
-                        <li v-for="(menu_2, index_2) in menu_1.children">
+                        <li v-for="(menu_2, index_2) in menu_1.child">
                             <div
-                                class="v-menu-second-tt v-menu-title"
+                                class="v-menu-second-tt v-menu-normal-tt v-menu-title"
+                                v-bind:class="{'active': BREADLIST.indexOf(menu_2) !== -1}"
                                 @click="clickMenu(menu_2)"
                             >
-                                <span>{{ menu_2.value }}</span>
+                                <span>{{ menu_2.title }}</span>
                                 <i
-                                    v-if="menu_2.children && menu_2.children.length"
+                                    v-if="menu_2.child && menu_2.child.length"
                                     class="el-icon-arrow-right v-menu-row"
-                                    v-bind:class="{'v-menu-row-open': menu_2.status}"
+                                    v-bind:class="{'v-menu-row-open': menu_2.checked}"
                                 ></i>
                             </div>
                             <!-- MENU LEVEL:3 -->
                             <el-collapse-transition>
                                 <ul
                                     class="v-menu-third"
-                                    v-show="menu_2.status"
-                                    v-if="menu_2.children && menu_2.children.length"
+                                    v-show="menu_2.checked"
+                                    v-if="menu_2.child && menu_2.child.length"
                                 >
                                     <li
-                                        v-for="(menu_3, index_3) in menu_2.children"
+                                        v-for="(menu_3, index_3) in menu_2.child"
                                     >
-                                        <div class="v-menu-third-tt v-menu-title" @click="clickMenu(menu_3)">
-                                            {{ menu_3.value }}
+                                        <div class="v-menu-third-tt v-menu-normal-tt v-menu-title"
+                                        v-bind:class="{'active': BREADLIST.indexOf(menu_3) !== -1}" @click="clickMenu(menu_3)">
+                                            {{ menu_3.title }}
                                         </div>
                                     </li>
                                 </ul>
